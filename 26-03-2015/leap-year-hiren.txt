@@ -4,4 +4,4 @@ class Year
 			(year % 400) != 0 ? (year % 100) != 0 : true
 		end
  	end
-end
+end 
