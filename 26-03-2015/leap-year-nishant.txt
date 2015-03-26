@@ -1,0 +1,27 @@
+class Year
+
+	def self.leap?(year)
+		if year_div_by_100(year)
+			if year_div_by_400(year)
+				return true
+			end
+		end
+		
+		unless year_div_by_100(year)
+			year_div_by_4(year)
+		end
+	end
+
+	def self.year_div_by_4(year)
+		year%4 == 0
+	end
+
+	def self.year_div_by_400(year)
+		year%400 == 0
+	end
+
+	def self.year_div_by_100(year)
+		year%100 == 0
+	end
+end
+
