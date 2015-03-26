@@ -1,0 +1,10 @@
+class Year
+	def self.leap?(entered_year)
+		leap_year = entered_year % 4 == 0 && entered_year % 100 != 0 || entered_year % 400 == 0
+		if leap_year == true
+			string = 'Yes, #{entered_year} is a leap year'
+		elsif leap_year = false
+			string = 'No, #{entered_year} is not a leap year'	
+		end
+	end 
+end
