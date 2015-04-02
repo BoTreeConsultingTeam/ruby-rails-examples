@@ -1,0 +1,14 @@
+class Coins
+
+  COIN_VALUES = [10, 5, 2, 1, 0.5, 0.25]
+
+  def self.count(num)
+    min_coins = 0
+    return 1 if COIN_VALUES.include?(num)
+    COIN_VALUES.select {|c| c if c <= num}.each_with_index do |c, index|
+      min_coins = 1 + self.count(num-c)
+      break
+    end
+    min_coins
+  end
+end
