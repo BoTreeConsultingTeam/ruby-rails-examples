@@ -1,0 +1,13 @@
+class Coins
+	COINS = [10,5,2,1,0.50,0.25]
+	def self.count(amount)
+		coin_count = 0
+		remaining_amount = amount
+		while remaining_amount > 0 do 
+			coin = COINS.select {|c| c <= remaining_amount}[0]			
+			coin_count += 1
+			remaining_amount = remaining_amount - coin
+		end
+		coin_count
+	end	
+end
