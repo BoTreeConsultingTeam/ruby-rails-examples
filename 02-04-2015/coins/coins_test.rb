@@ -55,4 +55,8 @@ class CoinsTest < MiniTest::Unit::TestCase
     assert_equal 1205, Coins.count(12029)
   end
 
+  def test_count_for_992567
+    assert_equal 99258, Coins.count(992567)
+  end
+
 end
