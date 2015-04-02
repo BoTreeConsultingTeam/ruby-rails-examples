@@ -17,4 +17,4 @@ Your program must use a recursive function to achieve this.
 Your program should allow float numbers with appropriate value where any of these coins can be used.
 
 Push your files named as per following convention:
-- coins-<your name>.txt
+`coins-[your name].txt`
