@@ -1,8 +1,7 @@
 #To test this,
 # 1. irb
 # 2. require 'coins.rb'
-# 3. c = Coins.new(3456)
-# 4. c.calculate()
+# 3. Coins.count(3456)
 
 class Coins
   
@@ -21,20 +20,12 @@ class Coins
   end
 
   def calculate
-    while(modulo != 0)
-      find_coins()
-    end
-    puts " Total coins ===> #{self.total_coins}"
-    total_coins
-  end
-
-  private
-
-  def find_coins
     max_devisor = FIXED_COINS_ARR.select{|i| i <= number}.first
     self.modulo = number%max_devisor
     self.total_coins += (number - modulo)/max_devisor
     self.number = modulo
+    calculate() if(modulo != 0)
+    total_coins
   end
 
 end
