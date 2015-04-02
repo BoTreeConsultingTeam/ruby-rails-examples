@@ -1,0 +1,18 @@
+class Coins
+  COINS = [10.0,5.0,2.0,1.0,0.50,0.25]
+
+  def self.count(amount,coins_count=0,i=0)
+    if amount == 0
+      coins_count
+    else
+      if amount >= COINS[i]
+        amount = amount - COINS[i]
+        coins_count = coins_count + 1
+        Coins.count(amount,coins_count,i)
+      else
+        Coins.count(amount,coins_count,i+1)
+      end
+    end
+  end
+  
+end
