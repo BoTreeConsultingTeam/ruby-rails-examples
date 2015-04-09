@@ -17,4 +17,13 @@ class WinnerTest < MiniTest::Unit::TestCase
     assert_equal 'Player-10', Winner.find(10, 12)
   end
 
+  def test_for_n_100_d_25
+    skip
+    assert_equal 'Player-94', Winner.find(100, 25)
+  end
+
+  def test_for_n_100_d_250
+    skip
+    assert_equal 'Player-20', Winner.find(100, 250)
+  end
 end
