@@ -1,0 +1,32 @@
+class Winner
+  def self.find(n, d)
+
+    players_arr = [] 
+    i = 1 
+    n.times do |i|
+      players_arr[i] = "Player-#{i+1}"
+      i = i + 1
+    end
+
+    i = 1
+
+    1000.times do 
+      if players_arr.compact.size == 1
+        players_arr.compact!
+        break
+      else
+        if i*d > n
+          players_arr.compact!
+        end
+        remove_player =  i*d%n
+        if (remove_player == 0) && d > n 
+          players_arr[0] = nil
+        else
+        players_arr[remove_player-1] = nil
+        end
+        i = i+1
+      end
+    end
+    players_arr.first
+  end
+end
