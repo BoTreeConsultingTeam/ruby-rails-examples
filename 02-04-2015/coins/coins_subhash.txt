@@ -5,7 +5,7 @@ class Coins
   def self.count(num)
     return 0 if num == 0
     min_count = 0
-    current_coin = COIN_VALUES.select{|c| c if c <= num}.first
+    current_coin = COIN_VALUES.find{|c| c <= num}
     min_count += (num/current_coin).to_i + count(num%current_coin)
   end
 end
