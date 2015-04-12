@@ -1,0 +1,31 @@
+class Winner
+	def self.find(players, diff)
+		@players  = return_players(players)
+		call(@players, diff)
+	end
+
+	def self.return_players(number)
+		@players = (1..number).to_a
+		@players.each_with_index do |a, i|
+			@players[i] = 	"Player-#{i+1}"
+		end
+		@players
+	end
+
+	def self.call(players, diff)	
+		i = 0
+		@count = 0
+		while i < diff	
+			if @count == (diff-1)
+				@count = 0
+				@players.shift if @players.length > 1
+			else
+				@players = @players.rotate!(1)		
+				@count = @count +1
+			end
+			i = i + 1
+		end
+		call(@players,diff) if @players.length >1
+		return @players[0]
+	end
+end
