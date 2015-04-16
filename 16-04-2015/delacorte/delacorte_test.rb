@@ -9,7 +9,6 @@ class DelacorteTest < MiniTest::Unit::TestCase
   end
 
   def test_2_3
-    skip
     a = [ [4, 1, 3], [6, 5, 2] ]
     assert_equal 37, Delacorte.find(a)
   end
