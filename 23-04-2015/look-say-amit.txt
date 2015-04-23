@@ -12,19 +12,18 @@ class LookSay
     num = num.to_s
     seq = ''
     splitted = num.split('')
-    return "1#{splitted.first}".to_i if num.length == 1
-
+  
     stack.push(splitted.first)
     splitted[1, num.length].each do |char|
       if stack.last == char
         stack.push char
         next
       end
-      seq += join(stack, stack.last)      
+      seq += join(stack, stack.last)
       stack.clear
       stack.push char
     end
-    seq += join(stack, num[-1, 1]) if stack.length > 0
+    seq += join(stack, num[-1]) if stack.length > 0
     seq.to_i
   end
 
