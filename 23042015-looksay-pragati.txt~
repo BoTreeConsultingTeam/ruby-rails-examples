@@ -1,0 +1,40 @@
+class LookSay
+	def self.next(no1,series1 = 1)
+    final_array = []
+		no = no1
+		series = series1
+		ary = no.to_s.split(//).map(&:to_i)
+		element = ary[0]
+		j = 1
+		while j <= series
+			str = ''
+			i=0
+			count = 1
+			while i <= ary.length-1
+				if((i+1) <= (ary.length) && ary.length != 1) 
+					if ary[i+1] == ary[i]	
+						count = count + 1	
+					else
+						element = ary[i]	
+					end
+				end
+				if ary[i+1] != ary[i]	
+					str = str + count.to_s + element.to_s	
+					count = 1
+				end
+				i = i + 1
+			end
+			final_array << str.to_i
+			element = str.to_i
+			j= j+ 1
+			ary = element.to_s.split(//).map(&:to_i)
+		end
+		if(final_array.length == 1)
+			puts final_array[0]
+			final_array[0]
+		else
+			puts final_array.inspect
+			final_array
+		end
+	end
+end
