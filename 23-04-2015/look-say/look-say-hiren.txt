@@ -1,0 +1,38 @@
+class LookSay
+	def self.next(*args)
+		nums = args.to_a
+		@ans = []
+
+		if nums[1]
+			nums[1].times do 
+				digits = number_to_degits(nums[0])
+				@ans << nums[0] = count_next_number([digits])
+			end 
+		else
+			digits = number_to_degits(nums[0])
+			@ans << count_next_number([digits])
+		end
+		@ans.size == 1 ? @ans.first : @ans
+	end
+
+	def self.number_to_degits(num)
+		num.to_s.chars.map(&:to_i)
+	end
+
+	def self.count_next_number(digits)
+		count = 1
+		next_number = ''
+		i = 0
+		digits = digits.flatten
+		digits.each do |n|
+			i += 1 
+			if n.eql?(digits[i])
+				count += 1
+			else
+				next_number = "#{next_number}#{count}#{n}".to_i
+				count = 1
+			end
+		end
+		next_number
+	end
+end
