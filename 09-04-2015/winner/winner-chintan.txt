@@ -1,0 +1,10 @@
+class Winner
+	def self.find(total,difference)
+		total_players = (1..total).to_a
+
+		while total_players.length>1 do 			
+			total_players = total_players.rotate!(difference-1)-[total_players[0]]
+		end
+		"Player-#{total_players[0]}"
+	end
+end

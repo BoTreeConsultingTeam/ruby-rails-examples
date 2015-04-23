@@ -1,0 +1,17 @@
+class Coins
+  COINS = [1000, 500, 200, 100, 50, 25]
+  def self.count(money)    
+    money = (money*100).round    
+    first_coin = COINS.find_index{|c| c <= money}
+    calculate(money, 0, first_coin)
+  end
+
+  def self.calculate(money, total_coins, next_coin)
+    coin_value = COINS[next_coin]
+    remaining_money = money % coin_value
+    total_coins += money / coin_value
+    return total_coins if remaining_money.zero?
+    next_coin = next_coin.next
+    calculate(remaining_money, total_coins, next_coin ) 
+  end
+end

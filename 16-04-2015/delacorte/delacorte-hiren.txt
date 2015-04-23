@@ -1,0 +1,31 @@
+require 'matrix'
+
+class Delacorte
+  def self.find(array)
+    matrix = Matrix.rows(array)
+    element = array.flatten.sort
+    gcd_number = []
+    distance = []
+    i = 0
+    while i < element.size
+      j = i+1
+      while j < element.size
+        a = element[i]
+        b = element[j]    
+        gcd_number << (a.gcd b)
+        distance << ((matrix.index(a).first - matrix.index(b).first).abs + (matrix.index(a).last - matrix.index(b).last).abs)
+        
+        j += 1
+      end
+      i += 1
+    end  
+    
+    delacorte = 0
+    i = 0
+    while i < gcd_number.size
+        delacorte = delacorte + (gcd_number[i] * distance[i])
+        i +=1
+    end
+    delacorte
+  end
+end

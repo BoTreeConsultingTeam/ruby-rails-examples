@@ -1,0 +1,17 @@
+class Winner
+	def self.find(n, d)
+		players = n.times.inject([]) {|arr, x| arr << "Player-#{x+1}" }
+		eliminated_players = []
+		current_index = 0
+		count = 1
+		while true
+			current_player = players[current_index]
+			count += 1 if !eliminated_players.include?(current_player)
+			eliminated_players << current_player if ((count-1)%d) == 0 && !eliminated_players.include?(current_player)
+			break if (players - eliminated_players).length == 1
+			current_index += 1
+			current_index = 0 if current_index >= players.length
+		end
+		(players - eliminated_players).first
+	end
+end

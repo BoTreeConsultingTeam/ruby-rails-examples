@@ -1,0 +1,71 @@
+class Winner
+	def find_winner
+		n = 0
+		d = 0
+
+		arr = get_n_and_d_values(n, d)
+		n = arr[0]
+		d = arr[1]
+
+		a = [*1..n]
+		puts a
+		puts a.class.inspect
+		x = 0
+
+		for p in 1..(a.size-d) do
+				temp = Array.new 
+				a.delete_at(d-1)
+				for i in (d-1)..(a.size-1)
+					temp << a[i]
+				end
+
+				for i in 0..(d-2)
+					temp << a[i]
+				end
+				a = temp
+
+
+		end
+				puts "##########"
+				puts "Winner is: " + a[1].to_s
+				puts "##########"
+
+	end
+
+	private
+
+	def get_n_and_d_values(n, d)
+		unless n.to_i > 0
+			puts "Please enter number of players"
+			n = gets.chomp
+			n = n.to_i
+		end
+
+		n = n.to_i
+
+		unless d.to_i > 0
+			puts "Please enter difference number"
+			d = gets.chomp
+			d = d.to_i
+		end
+
+		d = d.to_i
+
+		unless n > d
+			puts "Please enter the difference number less than number of players..."
+			d = gets.chomp
+			d = d.to_i
+		end
+
+		d = d.to_i
+		a = Array.new
+		a << n
+		a << d
+
+		return a
+	end
+
+end
+
+obj = Winner.new
+obj.find_winner
