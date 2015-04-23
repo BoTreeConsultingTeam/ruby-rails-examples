@@ -4,6 +4,7 @@ require_relative 'look_say'
 class LookSayTest < Minitest::Test
 
   def test_next_1_for_1
+    skip
     assert LookSay.next(1).eql?(11)
   end
 
@@ -27,8 +28,7 @@ class LookSayTest < Minitest::Test
     assert LookSay.next(2466).eql?(121426)
   end
 
-  def test_next_5_for_23
-    skip
+  def test_next_5_for_23    
     assert LookSay.next(23, 5).eql?([1213, 11121113, 31123113, 132112132113, 11131221121113122113])
   end
 
