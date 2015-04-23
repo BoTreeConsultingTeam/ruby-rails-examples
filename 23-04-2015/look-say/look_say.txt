@@ -1,0 +1,41 @@
+class LookSay
+
+	def self.next(*args)
+		n = args[0]
+		d = args[1] ? args[1] : 1
+		val = ""
+		temp = Array.new
+		final = Array.new
+
+		for x in 1..(d)
+			n.to_s.each_char do |c|
+				if temp.size == 0
+					temp << 1 << c.to_i
+				else
+					s = temp.size
+					if temp[s-1] == c.to_i
+						temp[s-2] += 1
+					else
+						temp << 1 << c.to_i
+					end
+				end
+			end
+	
+			for i in 0..(temp.size-1)
+				val += temp[i].to_s
+			end
+			n = val.to_i
+			final << val.to_i
+			temp = []
+			val = ""
+		end
+
+		puts "Final output = "
+		puts final.inspect
+		if d == 1
+			return final[0]
+		else
+			return final
+		end
+	end
+end
