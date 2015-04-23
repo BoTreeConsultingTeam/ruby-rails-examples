@@ -38,3 +38,4 @@ class LookSay
 		end
 	end
 end
+
