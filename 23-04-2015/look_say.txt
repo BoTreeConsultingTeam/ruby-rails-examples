@@ -1,0 +1,36 @@
+class LookSay
+  def self.next(num, iteration=1)
+    sequences = []
+    1.upto(iteration) do
+      sequences.push(get_sequence(sequences.last || num))      
+    end
+    sequences.size > 1 ? sequences : sequences.first
+  end
+
+  def self.get_sequence(num)
+    stack = []
+    num = num.to_s
+    seq = ''
+    splitted = num.split('')
+    return "1#{splitted.first}".to_i if num.length == 1
+
+    stack.push(splitted.first)
+    splitted[1, num.length].each do |char|
+      if stack.last == char
+        stack.push char
+        next
+      end
+      seq += join(stack, stack.last)      
+      stack.clear
+      stack.push char
+    end
+    seq += join(stack, num[-1, 1]) if stack.length > 0
+    seq.to_i
+  end
+
+  def self.join(stack, char)
+    seq = ''
+    occurrence = stack.length > 0 ? stack.length : 1
+    seq += "#{occurrence}#{char}"
+  end
+end
