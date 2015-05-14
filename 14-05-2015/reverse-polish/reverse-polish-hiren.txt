@@ -1,19 +1,19 @@
 class ReversePolish
-	def self.evaluate( rp )
-		unless rp.empty?
-			array = rp.split(' ')
-			array.each_with_index do |element, index|
-				if /[-+*\/]/.match(element)
-					ele1 = array[index-2].to_i
-					ele2 = array[index-1].to_i
-					
-					array[index] = ele1.public_send(element, ele2)
-					array[index-1] = array[index-3] 
-				end
-			end
-			return array[-1]
-		else
-			return 0
-		end
-	end
+  def self.evaluate( rp )
+    unless rp.empty?
+      array = rp.split(' ')
+      array.each_with_index do |element, index|
+        if /[-+*\/]/.match(element)
+          ele1 = array[index-2].to_i
+          ele2 = array[index-1].to_i
+          
+          array[index] = ele1.public_send(element, ele2)
+          array[index-1] = array[index-3] 
+        end
+      end
+      return array[-1]
+    else
+      return 0
+    end
+  end
 end
