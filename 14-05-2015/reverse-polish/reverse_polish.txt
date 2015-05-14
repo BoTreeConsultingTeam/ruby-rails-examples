@@ -1,0 +1,41 @@
+class ReversePolish
+	def self.evaluate(input)
+		operators = ["+", "-", "*", "/"]
+		input_array = input.split(" ")
+		value = 0
+
+		if input_array.size == 0
+			return value
+		else
+			value = self.get_final_value(value, input_array, operators)
+			return value
+		end
+	end
+
+	def self.get_final_value(val, a, op)
+		for i in 0..(a.size - 1)
+			if op.include?(a[i])
+				if a[i] == "+"
+					val = a[i-2].to_i + a[i-1].to_i
+				elsif a[i] == "-"
+					val = a[i-2].to_i - a[i-1].to_i
+				elsif a[i] == "*"
+					val = a[i-2].to_i * a[i-1].to_i
+				elsif a[i] == "/"
+					val = a[i-2].to_i / a[i-1].to_i
+				end
+				a[i-2] = val
+				a.delete_at(i-1)
+				a.delete_at(i-1)
+				break
+			else
+				next
+			end
+		end
+		if a.size == 1
+			return val
+		else
+			get_final_value(val, a, op)
+		end
+	end
+end
