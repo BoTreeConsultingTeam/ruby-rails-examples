@@ -1,0 +1,20 @@
+class ReversePolish
+  def self.evaluate(polish_str)
+    @res_arr = []
+    return 0 if polish_str == ''
+    elements= polish_str.split(' ')
+    elements.each do |ele|
+      if ele.match(/[\+\-\*\/]/)
+        perform_operation(@res_arr, ele)
+      else
+        @res_arr << ele
+      end
+    end
+    @res_arr.first
+  end
+
+  def self.perform_operation(res_arr, ele)
+    arr = res_arr.pop(2).map(&:to_i)
+    @res_arr << arr[0].public_send(ele,arr[1])
+  end
+end
