@@ -1,7 +1,7 @@
 class ReversePolish
   def self.evaluate(polish_str)
     @res_arr = []
-    return 0 if polish_str == ''
+    return 0 if polish_str.empty?
     elements= polish_str.split(' ')
     elements.each do |ele|
       if ele.match(/[\+\-\*\/]/)
