@@ -1,13 +1,12 @@
 class ReversePolish
   def self.evaluate(polish_str)
-    @res_arr = []
     return 0 if polish_str.empty?
-    elements= polish_str.split(' ')
-    elements.each do |ele|
-      if ele.match(/[\+\-\*\/]/)
-        perform_operation(@res_arr, ele)
+    @res_arr = []
+    polish_str.split(' ').each do |element|
+      if element.match(/[\+\-\*\/]/)
+        perform_operation(@res_arr, element)
       else
-        @res_arr << ele
+        @res_arr << element
       end
     end
     @res_arr.first
