@@ -1,0 +1,47 @@
+class Combinations
+  number = 100
+  def self.find(number)  
+     numbers = [1,2,3,4,5,6,7,8,9]
+     sum = number
+     signs = ['+', '-', '&']
+     numLength = numbers.length-1
+     cLength = (signs.length)**(numLength)
+     @combinations = []
+     @result = []
+     i = 0
+     k = 0
+      while i < cLength do
+         newArray = []
+         j = 0
+        while j < numbers.length do 
+          newArray[j*2] = numbers[j]
+          j += 1
+        end
+        @combinations << newArray
+        i += 1
+      end
+    
+      while k < numLength do
+         comlength = cLength / signs.length**(k+1)
+         signIndex = 0
+         i = 0
+        while i < cLength do
+           j = 0
+          while (j < comlength && i+j < cLength )do 
+              @combinations[i+j][k*2+1] = signs[signIndex]
+              j += 1
+          end
+          signIndex = (signIndex+1)%signs.length
+          i+=comlength
+        end
+        k += 1
+      end
+      
+      @combinations.compact.each do |com|
+        cstr = com.join.gsub(/&/, '')       
+        @result <<  cstr if eval(cstr) == sum
+      end
+      @result
+  end
+
+end
