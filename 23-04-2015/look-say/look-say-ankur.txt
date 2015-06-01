@@ -1,0 +1,14 @@
+class LookSay
+  def self.next(num,upto=1)
+    arr_num = []
+    upto.times do |i|
+      arr_num[i] = (i == 0) ? lookandsay(num.to_s) : lookandsay(arr_num[i-1])
+    end
+    arr_num.map!(&:to_i)
+    arr_num.size == 1 ? arr_num.first : arr_num
+  end
+
+  def self.lookandsay(str)
+    str.gsub(/(.)\1*/) {$&.length.to_s + $1}
+  end
+end
