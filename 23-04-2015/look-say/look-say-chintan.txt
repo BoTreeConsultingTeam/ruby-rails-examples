@@ -1,0 +1,29 @@
+class LookSay
+	
+	def self.next(num,len=1)
+		num = num.to_s
+		index = num.length
+		count = 0
+		input = [num]
+		ans = []
+		while count!=len do
+			inp = input.last.to_s
+			ans << get_next_num(0,1,[[1,inp[0].to_i]],inp).flatten.join("").to_i
+			input << ans.last
+			count += 1
+		end		
+		return ans.length==1 ? ans[0] : ans
+	end
+
+	def self.get_next_num(si,ei,ary,ele)
+		return ary if si==ele.length-1
+		if ele[si]==ele[ei]
+			ary.last[0] += 1
+			get_next_num(ei,ei+1,ary,ele)
+		else	
+			ary << [1,ele[ei].to_i]
+			get_next_num(ei,ei+1,ary,ele)
+		end		
+	end
+
+end
