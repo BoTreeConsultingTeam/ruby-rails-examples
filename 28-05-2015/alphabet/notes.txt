@@ -1,0 +1,4 @@
+About Composition with example: 
+  http://learnrubythehardway.org/book/ex44.html
+  http://www.sitepoint.com/composition-inheritance/
+
