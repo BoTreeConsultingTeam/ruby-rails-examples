@@ -1,0 +1,45 @@
+class ReversePolish
+  def self.evaluate(str)
+    ops = %w[+ - * /]
+    arr = str.split(/\s+/)
+    the_stack = []
+
+    if arr != [] 
+      arr.each_with_index do |x,y|
+      the_stack << x unless ops.include?(x)
+        if ops.include?(x) && the_stack.length > 1
+        b = the_stack.pop
+        a = the_stack.pop
+        the_stack << "(#{a} #{x} #{b})" if (x == "+" || x == "-") && (y < (arr.length - 1))
+        the_stack << "#{a} #{x} #{b}" if x == "*" || x == "/" || y == (arr.length - 1)
+        end
+      end
+      eval(the_stack[0].to_s)
+    else
+      0
+    end
+  end
+end
+
+
+
+
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+
